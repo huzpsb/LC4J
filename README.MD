@@ -75,9 +75,9 @@ graph TB
 
 Sample:  
 C4J效果展示
-![C4J](pic\C4J.png)
+![C4J](pic/C4J.png)
 TEX效果展示
-![LaTeX](pic\TEX.png)
+![LaTeX](pic/TEX.png)
 
 Author:  
 @huzpsb  
