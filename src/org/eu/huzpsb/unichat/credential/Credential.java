@@ -8,9 +8,7 @@ public class Credential {
     public final String additional;
 
     public Credential(CredentialType type, String value) {
-        this.type = type;
-        this.value = value;
-        this.additional = null;
+        this(type, value, null);
     }
 
     public Credential(CredentialType type, String value, String additional) {

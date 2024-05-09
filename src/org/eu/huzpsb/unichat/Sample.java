@@ -1,7 +1,7 @@
 package org.eu.huzpsb.unichat;
 
 import org.eu.huzpsb.unichat.agent.Agent;
-import org.eu.huzpsb.unichat.agent.impl.latex.LatexTransformer;
+import org.eu.huzpsb.unichat.agent.impl.anti.AntiDetectTransformer;
 import org.eu.huzpsb.unichat.conversation.Conversation;
 import org.eu.huzpsb.unichat.conversation.Entry;
 import org.eu.huzpsb.unichat.conversation.EntryOwner;
@@ -17,9 +17,9 @@ public class Sample {
         Credential credential = new Credential(CredentialType.TOKEN, "sk-1234567890");
         CredentialManager credentialManager = new SimpleCredentialManager(credential);
         LLM llm = new ChatGPT(credentialManager);
-        Agent agent = new Agent(llm, new LatexTransformer());
+        Agent agent = new Agent(llm, new AntiDetectTransformer());
         Conversation conversation = new Conversation();
-        Entry entry = new Entry(EntryOwner.USER, "写一篇关于5G网络的文章。");
+        Entry entry = new Entry(EntryOwner.USER, "5G网络与人工智能");
         conversation.entries.add(entry);
         Entry result = agent.Chat(conversation);
         System.out.println(result.content);

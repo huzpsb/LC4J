@@ -7,23 +7,6 @@ import org.eu.huzpsb.unichat.conversation.EntryOwner;
 import org.eu.huzpsb.unichat.exceptions.TransformerException;
 
 public class FakeGPT4Transformer implements Transformer {
-    @Override
-    public Conversation beforeSend(Conversation conversation) {
-        TransformerException.throwIfNotAu(conversation);
-        String prompt = conversation.entries.get(conversation.entries.size() - 1).content;
-        String hint = getHint(prompt);
-        if (hint.length() > 3) {
-            Entry entry = new Entry(EntryOwner.USER, hint);
-            conversation.entries.add(entry);
-        }
-        return conversation;
-    }
-
-    @Override
-    public Entry afterReceive(Entry entry) {
-        return entry;
-    }
-
     private static String getHint(String prompt) {
         StringBuilder sb = new StringBuilder();
         if (prompt.contains("鲁迅") && prompt.contains("周树人")) {
@@ -45,5 +28,22 @@ public class FakeGPT4Transformer implements Transformer {
             sb.append("Given that yesterday's today's tomorrow is today. ");
         }
         return sb.toString();
+    }
+
+    @Override
+    public Conversation beforeSend(Conversation conversation) {
+        TransformerException.throwIfNotAu(conversation);
+        String prompt = conversation.entries.get(conversation.entries.size() - 1).content;
+        String hint = getHint(prompt);
+        if (hint.length() > 3) {
+            Entry entry = new Entry(EntryOwner.USER, hint);
+            conversation.entries.add(entry);
+        }
+        return conversation;
+    }
+
+    @Override
+    public Entry afterReceive(Entry entry) {
+        return entry;
     }
 }

@@ -5,5 +5,6 @@ public enum CredentialType {
     TOKEN,
     USERNAME_PASSWORD,
     AK_SK,
+    EP_AID,
     NONE
 }
